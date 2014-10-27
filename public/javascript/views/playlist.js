@@ -4,6 +4,11 @@ $(document).ready(function() {
 
     var init = function() {
       routes();
+      build_playlist_name();
+    }
+
+    var build_playlist_name = function() {
+      $('.playlist-name').html(["Playlist - ", retrievePlaylist().get('name')].join(''))
     }
 
     var routes = function() {
@@ -15,9 +20,16 @@ $(document).ready(function() {
         Backbone.history.start();
     }
 
+    var retrievePlaylist = function() {
+      var ps = new UserPlaylists();
+      ps.fetch();
+      return ps.findWhere({id:$('#page-data').data('playlist-id')});
+    }
+
     init();
 
     return {
+      retrievePlaylist:retrievePlaylist
     }
   }();
 
