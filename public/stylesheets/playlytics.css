@@ -3,6 +3,19 @@ body {
   font-family: 'Alegreya Sans', 'Arial';
   font-size: 20px; }
 
+.playlytics-button {
+  display: block;
+  width: 100px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 5px;
+  border: 1px dashed #ccc;
+  text-align: center; }
+  .playlytics-button:hover {
+    color: #413e3e;
+    background-color: #fff; }
+
 #playlytics {
   width: 960px;
   height: 500px;
@@ -14,5 +27,24 @@ body {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
-  #playlytics > h1 {
-    font-size: 30px; }
+
+#action-playlists > h1,
+#action-playlist > h1,
+#action-search > h1 {
+  font-size: 30px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px; }
+
+#action-playlists .playlists {
+  margin-top: 20px;
+  overflow: auto; }
+  #action-playlists .playlists article {
+    width: 250px;
+    float: left;
+    margin-bottom: 30px; }
+    #action-playlists .playlists article img {
+      float: left;
+      margin-right: 10px; }
+    #action-playlists .playlists article h3 {
+      font-size: 14px; }

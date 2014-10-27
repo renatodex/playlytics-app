@@ -1,22 +1,81 @@
 @import 'source/mixins.css.scss';
 
+@mixin app-font() {
+  font-family: 'Alegreya Sans', 'Arial';
+}
+
+@function base-color() {
+  @return #413e3e;
+}
+
 body {
   background-color:#f0f0f0;
-  font-family: 'Alegreya Sans', 'Arial';
+  @include app-font;
   font-size: 20px;
+}
+
+.playlytics-button {
+  display:block;
+  width: 100px;
+  color: #ffffff;
+  text-decoration:none;
+  font-size:16px;
+  padding:5px;
+  border:1px dashed #ccc;
+  text-align:center;
+
+  &:hover {
+    color: base-color();
+    background-color: #fff;
+  }
 }
 
 #playlytics {
   width: 960px;
   height: 500px;
-  background-color: #413e3e;
+  background-color: base-color();
   padding:40px;
   margin:0 auto;
   margin-top: 30px;
   color: #ffffff;
   @include border-box;
+}
 
+#action-playlists,
+#action-playlist,
+#action-search {
   & > h1 {
     font-size:30px;
+    padding-bottom:5px;
+    border-bottom:1px solid #ccc;
+    margin-bottom:20px;
+  }
+}
+
+
+#action-playlists {
+  .playlists {
+    margin-top:20px;
+    overflow:auto;
+
+    article {
+      width:250px;
+      float:left;
+      margin-bottom:30px;
+
+
+      img {
+        float:left;
+        margin-right:10px;
+      }
+
+      h2 {
+
+      }
+
+      h3 {
+        font-size:14px;
+      }
+    }
   }
 }
