@@ -19,6 +19,9 @@
     <script src="/javascript/vendor/backbone.localstorage/backbone.localstorage.js"></script>
     <script src="/javascript/vendor/backbone.modal/backbone.modal.js"></script>
 
+    <!-- INITIALIZER -->
+    <script src="/javascript/initializer.js"></script>
+
     <!-- MODELS -->
     <script src="/javascript/models/playlist.js"></script>
 
@@ -38,17 +41,13 @@
       </div>
       <div class="bbm-modal__section">
         <p>Name:</p>
-        <input type="text" name="playlist_name" />
+        <input type="text" name="playlist_name" class="playlist_name" />
 
         <p>Description</p>
-        <textarea name="playlist_description"></textarea>
-
-        <p>
-        <button name="" class="playlytics_button">save</button>
-        </p>
+        <textarea name="playlist_description" class="playlist_description" ></textarea>
       </div>
       <div class="bbm-modal__bottombar">
-        <a href="#" class="bbm-button">close</a>
+        <a href="#" class="bbm-button">create playlist</a>
       </div>
     </script>
 
