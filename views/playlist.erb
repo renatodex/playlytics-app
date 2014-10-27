@@ -1,1 +1,10 @@
-O id da sua playlist é <%= @id %>
+<section id="action-playlist">
+  <h1 class="playlist-name"></h1>
+  <a href="/#new-playlist" class="playlytics-button">create playlist</a>
+  <a href="/" class="playlytics-button">my playlists</a>
+  <section class="playlists"></section>
+</section>
+
+<script id="template_playlist_name" type="text/template">
+  Playlist - {{playlist_name}}
+</script>

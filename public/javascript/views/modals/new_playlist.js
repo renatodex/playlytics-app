@@ -8,12 +8,12 @@ $(document).ready(function() {
     },
 
     submit: function() {
-      PlaylistAction.createPlaylist(
+      PageAction.createPlaylist(
         $('.playlist_name').val(),
         $('.playlist_description').val()
       );
       window.PageRouter.navigate('/');
-      PlaylistAction.fetchPlaylists();
+      PageAction.fetchPlaylists();
     }
   });
 
