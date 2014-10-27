@@ -3,14 +3,54 @@
     <link rel='stylesheet' type='text/css' href='/stylesheets/reset.css' />
     <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Alegreya+Sans:400,500italic' />
     <link rel='stylesheet' type='text/css' href='/stylesheets/playlytics.css' />
+    <link rel='stylesheet' type='text/css' href='/javascript/vendor/backbone.modal/backbone.modal.css' />
+    <link rel='stylesheet' type='text/css' href='/javascript/vendor/backbone.modal/backbone.modal.theme.css' />
   </head>
   <body>
     <section id="playlytics">
+      <div id="modal-wrapper"></div>
       <%= yield %>
     </section>
 
-    <script src="/javascript/vendor/sizzle.js"></script>
-    <script src="/javascript/vendor/underscore.js"></script>
-    <script src="/javascript/vendor/backbone.js"></script>
+    <!-- VENDOR -->
+    <script src="/javascript/vendor/zepto/zepto.js"></script>
+    <script src="/javascript/vendor/underscore/underscore.js"></script>
+    <script src="/javascript/vendor/backbone/backbone.js"></script>
+    <script src="/javascript/vendor/backbone.localstorage/backbone.localstorage.js"></script>
+    <script src="/javascript/vendor/backbone.modal/backbone.modal.js"></script>
+
+    <!-- MODELS -->
+    <script src="/javascript/models/playlist.js"></script>
+
+    <!-- COLLECTIONS -->
+    <script src="/javascript/collections/user_playlists.js"></script>
+
+    <!-- MODALS -->
+    <script src="/javascript/views/modals/new_playlist.js"></script>
+
+    <!-- VIEWS -->
+    <script src="/javascript/views/playlist.js"></script>
+
+    <!-- TEMPLATES -->
+    <script type="text/template" id="modal-template">
+      <div class="bbm-modal__topbar">
+        <h3 class="bbm-modal__title">Create new Playlist</h3>
+      </div>
+      <div class="bbm-modal__section">
+        <p>Name:</p>
+        <input type="text" name="playlist_name" />
+
+        <p>Description</p>
+        <textarea name="playlist_description"></textarea>
+
+        <p>
+        <button name="" class="playlytics_button">save</button>
+        </p>
+      </div>
+      <div class="bbm-modal__bottombar">
+        <a href="#" class="bbm-button">close</a>
+      </div>
+    </script>
+
   </body>
 </html>
