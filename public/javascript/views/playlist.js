@@ -28,8 +28,7 @@ $(document).ready(function() {
 
       $('.playlists').empty();
       _.each(ps.models, function(playlist) {
-        var template_html = $('#template-playlist').html();
-        var template_builder = _.template(template_html);
+        var template_builder = _.template($('#template-playlist').html());
         $('.playlists').append(template_builder(playlist.toJSON()));
       })
     }

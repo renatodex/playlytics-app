@@ -39,6 +39,11 @@ body {
 #action-playlists .playlists {
   margin-top: 20px;
   overflow: auto; }
+  #action-playlists .playlists a {
+    text-decoration: none;
+    color: #fff; }
+    #action-playlists .playlists a:hover {
+      text-decoration: underline; }
   #action-playlists .playlists article {
     width: 250px;
     float: left;

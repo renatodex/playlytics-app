@@ -6,8 +6,8 @@
 
 <script type="text/template" id="template-playlist">
   <article>
-    <img src="{{image_url}}" width="50" height="50"/>
-    <h2>{{name}}</h2>
-    <h3>{{description}}</h3>
+    <a href="/playlist/{{id}}"><img src="{{image_url}}" width="50" height="50"/></a>
+    <h2><a href="/playlist/{{id}}">{{name}}</a></h2>
+    <h3><a href="/playlist/{{id}}">{{description}}</a></h3>
   </article>
 </script>

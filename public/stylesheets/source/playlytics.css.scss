@@ -57,6 +57,15 @@ body {
     margin-top:20px;
     overflow:auto;
 
+    a {
+      text-decoration:none;
+      color:#fff;
+
+      &:hover {
+        text-decoration:underline;
+      }
+    }
+
     article {
       width:250px;
       float:left;
