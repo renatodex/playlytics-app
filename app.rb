@@ -1,5 +1,12 @@
 require 'sinatra'
 
+set :views, Proc.new { File.join(root, "views") }
+
 get '/' do
-	'Hello World!'
+	erb :playlists
+end
+
+get '/playlist/:id' do
+	@id = params[:id]
+	erb :playlist
 end
