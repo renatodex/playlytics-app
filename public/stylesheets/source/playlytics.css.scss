@@ -1,0 +1,22 @@
+@import 'source/mixins.css.scss';
+
+body {
+  background-color:#f0f0f0;
+  font-family: 'Alegreya Sans', 'Arial';
+  font-size: 20px;
+}
+
+#playlytics {
+  width: 960px;
+  height: 500px;
+  background-color: #413e3e;
+  padding:40px;
+  margin:0 auto;
+  margin-top: 30px;
+  color: #ffffff;
+  @include border-box;
+
+  & > h1 {
+    font-size:30px;
+  }
+}
