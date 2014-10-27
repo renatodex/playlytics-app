@@ -11,3 +11,23 @@
     <h3><a href="/playlist/{{id}}">{{description}}</a></h3>
   </article>
 </script>
+
+<script type="text/template" id="modal-template">
+  <div class="bbm-modal__topbar">
+    <h3 class="bbm-modal__title">Create new Playlist</h3>
+  </div>
+  <div class="bbm-modal__section">
+    <p>Name:</p>
+    <input type="text" name="playlist_name" class="playlist_name" />
+
+    <p>Description</p>
+    <textarea name="playlist_description" class="playlist_description" ></textarea>
+  </div>
+  <div class="bbm-modal__bottombar">
+    <a href="#" class="bbm-button">create playlist</a>
+  </div>
+</script>
+
+<% content_for :pre_js do %>
+  <script src="/javascript/views/modals/new_playlist.js"></script>
+<% end %>

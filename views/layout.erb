@@ -22,34 +22,19 @@
     <!-- INITIALIZER -->
     <script src="/javascript/initializer.js"></script>
 
+    <%= yield_content :pre_js %>
+
     <!-- MODELS -->
+    <script src="/javascript/models/playlist_item.js"></script>
     <script src="/javascript/models/playlist.js"></script>
 
     <!-- COLLECTIONS -->
+    <script src="/javascript/collections/user_playlist_items.js"></script>
     <script src="/javascript/collections/user_playlists.js"></script>
-
-    <!-- MODALS -->
-    <script src="/javascript/views/modals/new_playlist.js"></script>
 
     <!-- VIEWS -->
     <script src="/javascript/views/<%=@view%>.js"></script>
 
-    <!-- TEMPLATES -->
-    <script type="text/template" id="modal-template">
-      <div class="bbm-modal__topbar">
-        <h3 class="bbm-modal__title">Create new Playlist</h3>
-      </div>
-      <div class="bbm-modal__section">
-        <p>Name:</p>
-        <input type="text" name="playlist_name" class="playlist_name" />
-
-        <p>Description</p>
-        <textarea name="playlist_description" class="playlist_description" ></textarea>
-      </div>
-      <div class="bbm-modal__bottombar">
-        <a href="#" class="bbm-button">create playlist</a>
-      </div>
-    </script>
-
+    <%= yield_content :pos_js %>
   </body>
 </html>

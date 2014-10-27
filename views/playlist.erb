@@ -2,12 +2,27 @@
 
   <input type="hidden" id="page-data" data-playlist-id="<%= @id %>" />
 
-  <h1 class="playlist-name">Playlist</h1>
-  <a href="/#new-playlist" class="playlytics-button">create playlist</a>
-  <a href="/" class="playlytics-button">my playlists</a>
+  <h1 class="playlist-name">Playlist - <span></span></h1>
+
+  <a href="/" class="playlytics-button">back to playlists</a>
+
+  <a href="#new-playlist-item" class="playlytics-button">add song</a>
+
   <section class="playlists"></section>
 </section>
 
-<script id="template_playlist_name" type="text/template">
-  Playlist - {{playlist_name}}
+<script type="text/template" id="new-playlist-item-template">
+  <div class="bbm-modal__topbar">
+    <h3 class="bbm-modal__title">Create new Playlist</h3>
+  </div>
+  <div class="bbm-modal__section">
+    <p>Name:</p>
+    <input type="text" name="playlist_name" class="playlist_name" />
+
+    <p>Description</p>
+    <textarea name="playlist_description" class="playlist_description" ></textarea>
+  </div>
+  <div class="bbm-modal__bottombar">
+    <a href="#" class="bbm-button">create playlist</a>
+  </div>
 </script>

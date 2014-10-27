@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/contrib'
 
 set :views, Proc.new { File.join(root, "views") }
 

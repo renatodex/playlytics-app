@@ -8,7 +8,7 @@ $(document).ready(function() {
     }
 
     var build_playlist_name = function() {
-      $('.playlist-name').html(["Playlist - ", retrievePlaylist().get('name')].join(''))
+      $('.playlist-name span').html(retrievePlaylist().get('name'))
     }
 
     var routes = function() {
