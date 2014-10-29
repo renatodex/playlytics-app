@@ -10,6 +10,8 @@
     <section id="searchbar">
       <div class="wrapper">
         Search song: <input type="text" name="search_field" class="search_field" />
+        <ul class="autocomplete">
+        </ul>
       </div>
     </section>
 
@@ -29,6 +31,9 @@
     <script src="/javascript/initializer.js"></script>
 
     <%= yield_content :pre_js %>
+
+    <!-- FACADE -->
+    <script src="/javascript/facade/spotify.js"></script>
 
     <!-- MODELS -->
     <script src="/javascript/models/playlist_item.js"></script>

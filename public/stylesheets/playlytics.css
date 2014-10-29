@@ -14,6 +14,18 @@ body {
   color: #fff;
   width: 100%;
   padding: 15px; }
+  #searchbar .autocomplete li:first-child {
+    border-top: 1px solid #fff;
+    margin-top: 20px;
+    padding-top: 20px; }
+  #searchbar .autocomplete li {
+    margin-bottom: 20px; }
+    #searchbar .autocomplete li img {
+      float: left;
+      margin-right: 10px; }
+    #searchbar .autocomplete li a {
+      color: #9f9681;
+      font-size: 15px; }
   #searchbar .wrapper {
     width: 960px;
     margin: 0 auto; }
@@ -47,7 +59,8 @@ body {
   color: #ffffff;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  border-radius: 10px; }
 
 #action-playlists > h1,
 #action-playlist > h1,

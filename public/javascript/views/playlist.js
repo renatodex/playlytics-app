@@ -6,6 +6,30 @@ $(document).ready(function() {
       routes();
       build_playlist_name();
       fetchPlaylistItems();
+      autoSearch();
+    }
+
+    var typingTimer;
+    var doneTypingInterval = 200;
+
+    var autoSearch = function() {
+      $('.search_field').keyup(function(){
+          clearTimeout(typingTimer);
+          typingTimer = setTimeout(function() {
+            $('.autocomplete').empty();
+
+            var playlistItems = SpotifyFacade.search($('.search_field').val(), function(result) {
+              _.each(result.models.slice(0,5), function(playlist) {
+                var template_builder = _.template($('#playlist_item_template').html());
+                $('.autocomplete').append(template_builder(playlist.toJSON()));
+              })
+            })
+          }, doneTypingInterval);
+      });
+
+      $('.search_field').keydown(function(){
+          clearTimeout(typingTimer);
+      });
     }
 
     var build_playlist_name = function() {

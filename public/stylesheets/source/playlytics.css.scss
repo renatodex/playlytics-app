@@ -27,6 +27,28 @@ body {
   width:100%;
   padding:15px;
 
+  .autocomplete {
+    li:first-child {
+      border-top:1px solid #fff;
+      margin-top:20px;
+      padding-top:20px;
+    }
+
+    li {
+      margin-bottom:20px;
+
+      img {
+        float:left;
+        margin-right: 10px;
+      }
+
+      a {
+        color: #9f9681;
+        font-size:15px;
+      }
+    }
+  }
+
   .wrapper {
     width:960px;
     margin:0 auto;
@@ -66,6 +88,7 @@ body {
   margin-top: 80px;
   color: #ffffff;
   @include border-box;
+  border-radius:10px;
 }
 
 #action-playlists,
