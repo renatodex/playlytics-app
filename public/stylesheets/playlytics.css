@@ -3,6 +3,27 @@ body {
   font-family: 'Alegreya Sans', 'Arial';
   font-size: 20px; }
 
+.clear {
+  clear: both; }
+
+#searchbar {
+  margin: 0px;
+  top: 0px;
+  position: fixed;
+  background-color: #202020;
+  color: #fff;
+  width: 100%;
+  padding: 15px; }
+  #searchbar .wrapper {
+    width: 960px;
+    margin: 0 auto; }
+  #searchbar input {
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid #000;
+    width: 400px;
+    outline: none; }
+
 .playlytics-button {
   display: block;
   width: 100px;
@@ -22,7 +43,7 @@ body {
   background-color: #413e3e;
   padding: 40px;
   margin: 0 auto;
-  margin-top: 30px;
+  margin-top: 80px;
   color: #ffffff;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -35,6 +56,17 @@ body {
   padding-bottom: 5px;
   border-bottom: 1px solid #ccc;
   margin-bottom: 20px; }
+
+#action-playlist .playlist_items {
+  margin-top: 20px; }
+  #action-playlist .playlist_items li {
+    margin-bottom: 20px; }
+    #action-playlist .playlist_items li img {
+      float: left;
+      margin-right: 10px; }
+    #action-playlist .playlist_items li a {
+      color: #9f9681;
+      font-size: 15px; }
 
 #action-playlists .playlists {
   margin-top: 20px;

@@ -6,23 +6,55 @@
 
   <a href="/" class="playlytics-button">back to playlists</a>
 
-  <a href="#new-playlist-item" class="playlytics-button">add song</a>
+  <a href="#new-playlist-item/<%= @id %>" class="playlytics-button">add song</a>
 
-  <section class="playlists"></section>
+  <ul class="playlist_items">
+  </ul>
 </section>
 
 <script type="text/template" id="new-playlist-item-template">
   <div class="bbm-modal__topbar">
-    <h3 class="bbm-modal__title">Create new Playlist</h3>
+    <h3 class="bbm-modal__title">Create new Playlist Item</h3>
   </div>
-  <div class="bbm-modal__section">
-    <p>Name:</p>
-    <input type="text" name="playlist_name" class="playlist_name" />
 
-    <p>Description</p>
-    <textarea name="playlist_description" class="playlist_description" ></textarea>
+  <div class="bbm-modal__section">
+    <input type="hidden" name="playlist_id" class="playlist_id" value="<%= @id %>" />
+
+    <p>Track:</p>
+    <input type="text" name="playlist_item_track" class="playlist_item_track" />
+
+    <p>Artist</p>
+    <input type="text" name="playlist_item_artist" class="playlist_item_artist" />
+
+    <p>Album</p>
+    <input type="text" name="playlist_item_album" class="playlist_item_album" />
+
+    <p>Duration</p>
+    <input type="text" name="playlist_item_duration" class="playlist_item_duration" />
+
+    <p>Image URL</p>
+    <input type="text" name="playlist_item_image_url" class="playlist_item_image_url" />
+
+    <p>Link</p>
+    <input type="text" name="playlist_item_link" class="playlist_item_link" />
+
+    <p>Popularity</p>
+    <input type="text" name="playlist_item_popularity" class="playlist_item_popularity" />
   </div>
   <div class="bbm-modal__bottombar">
-    <a href="#" class="bbm-button">create playlist</a>
+    <a href="#" class="bbm-button">create playlist item</a>
   </div>
 </script>
+
+<script type="text/template" id="playlist_item_template">
+  <li>
+    <img src="{{image_url}}" width=50 height=50></img>
+    <p><strong>{{track}}</strong> - {{artist}} ({{album}})</p>
+    <span><a href="{{link}}">open at spotify</a></span>
+    <div class="clear"></div>
+  </li>
+</script>
+
+<% content_for :pre_js do %>
+  <script src="/javascript/views/modals/new_playlist_item.js"></script>
+<% end %>

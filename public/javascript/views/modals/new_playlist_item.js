@@ -9,8 +9,14 @@ $(document).ready(function() {
 
     submit: function() {
       PageAction.createPlaylistItem(
-        $('.playlist_name').val(),
-        $('.playlist_description').val()
+        $('.playlist_id').val(),
+        $('.playlist_item_track').val(),
+        $('.playlist_item_artist').val(),
+        $('.playlist_item_album').val(),
+        $('.playlist_item_duration').val(),
+        $('.playlist_item_image_url').val(),
+        $('.playlist_item_link').val(),
+        $('.playlist_item_popularity').val()
       );
       window.PageRouter.navigate('/');
       PageAction.fetchPlaylistItems();
