@@ -2,31 +2,52 @@ $(document).ready(function() {
 
   var PlaylistAction = function() {
 
+    var typingTimer;
+    var doneTypingInterval = 200;
+
     var init = function() {
       routes();
       build_playlist_name();
       fetchPlaylistItems();
-      autoSearch();
+      events();
     }
 
-    var typingTimer;
-    var doneTypingInterval = 200;
+    var events = function() {
+      $('.add-to-playlist').unbind('click');
+      $('.add-to-playlist').on('click', function() {
+        var track_info = $(this).data('track-info');
 
-    var autoSearch = function() {
+        var ps = new UserPlaylistItems();
+        ps.create(track_info);
+
+        var playlist = retrievePlaylist();
+        playlist.set('image_url', track_info.image_url);
+        playlist.save();
+
+        $('.autocomplete').empty();
+        fetchPlaylistItems();
+
+      });
+
+      $('.search-field').unbind('keyup');
       $('.search_field').keyup(function(){
           clearTimeout(typingTimer);
           typingTimer = setTimeout(function() {
             $('.autocomplete').empty();
-
             var playlistItems = SpotifyFacade.search($('.search_field').val(), function(result) {
               _.each(result.models.slice(0,5), function(playlist) {
-                var template_builder = _.template($('#playlist_item_template').html());
-                $('.autocomplete').append(template_builder(playlist.toJSON()));
+                var template_params = playlist.toJSON();
+                template_params['playlist_json'] = JSON.stringify(playlist.toJSON());;
+                var template_builder = _.template($('#playlist_item_autocomplete_template').html());
+                $('.autocomplete').append(template_builder(template_params));
               })
+
+              events();
             })
           }, doneTypingInterval);
       });
 
+      $('.search_field').unbind('keydown');
       $('.search_field').keydown(function(){
           clearTimeout(typingTimer);
       });

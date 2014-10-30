@@ -6,8 +6,6 @@
 
   <a href="/" class="playlytics-button">back to playlists</a>
 
-  <a href="#new-playlist-item/<%= @id %>" class="playlytics-button">add song</a>
-
   <ul class="playlist_items">
   </ul>
 </section>
@@ -55,11 +53,11 @@
   </li>
 </script>
 
-<script type="text/template" id="playlist_item_template_autocomplete">
+<script type="text/template" id="playlist_item_autocomplete_template">
   <li>
     <img src="{{image_url}}" width=50 height=50></img>
     <p><strong>{{track}}</strong> - {{artist}} ({{album}})</p>
-    <span><a href="#add-track-to-playlist/">add to list</a></span>
+    <span><a href="#" class="add-to-playlist" data-track-info='{{playlist_json}}'>add to list</a></span>
     <div class="clear"></div>
   </li>
 </script>
