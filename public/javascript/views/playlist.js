@@ -39,8 +39,9 @@ $(document).ready(function() {
         var track_info = $(this).data('track-info');
         console.log('Found tracking info:', track_info)
 
-        var ps = new UserPlaylistItems();
-        ps.create(track_info);
+        // var ps = new UserPlaylistItems();
+        // ps.create(track_info);
+        createPlaylistItem(track_info);
 
         var playlist = retrievePlaylist();
         playlist.set('image_url', track_info.image_url);
@@ -122,18 +123,24 @@ $(document).ready(function() {
       return ps.findWhere({id:$('#page-data').data('playlist-id')});
     }
 
-    var createPlaylistItem = function(user_playlist_id, track, artist, album, duration, image_url, link, popularity) {
+    var createPlaylistItem = function(playlist_item) {
       var ps = new UserPlaylistItems();
       ps.create({
-        user_playlist_id: user_playlist_id,
-        track: track,
-        artist: artist,
-        album: album,
-        duration: duration,
-        image_url: image_url,
-        link: link,
-        popularity: popularity
+        user_playlist_id: playlist_item.user_playlist_id,
+        track: playlist_item.track,
+        artist: playlist_item.artist,
+        album: playlist_item.album,
+        duration: parse_duration(playlist_item.duration),
+        image_url: playlist_item.image_url,
+        link: playlist_item.link,
+        popularity: playlist_item.popularity
       });
+    }
+
+    var parse_duration = function(duration) {
+      var utils = new Utils()
+      var time = utils.millisecondsToTime(duration);
+      return [time.minutes, ':', time.seconds, 'min'].join('') ;
     }
 
     init();
