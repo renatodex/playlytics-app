@@ -13,9 +13,31 @@ $(document).ready(function() {
     }
 
     var events = function() {
+      $('.remove-playlist-item').unbind('click');
+      $('.remove-playlist-item').bind('click', function() {
+        console.log('Preparing to remove...');
+
+        var id = $(this).data('playlist-item-id');
+        var ps = new UserPlaylistItems();
+        ps.fetch();
+
+        var found = ps.findWhere({id:id})
+        console.log('Found item...', found);
+
+        found.destroy();
+
+        console.log('Fetching playlist items...');
+        fetchPlaylistItems();
+
+        console.log('Finished to remove...');
+      })
+
       $('.add-to-playlist').unbind('click');
       $('.add-to-playlist').on('click', function() {
+        console.log('Preparing to add...');
+
         var track_info = $(this).data('track-info');
+        console.log('Found tracking info:', track_info)
 
         var ps = new UserPlaylistItems();
         ps.create(track_info);
@@ -27,6 +49,7 @@ $(document).ready(function() {
         $('.autocomplete').empty();
         fetchPlaylistItems();
 
+        console.log('Finished to add...');
       });
 
       $('.search-field').unbind('keyup');
@@ -37,7 +60,7 @@ $(document).ready(function() {
             var playlistItems = SpotifyFacade.search($('.search_field').val(), function(result) {
               _.each(result.models.slice(0,5), function(playlist) {
                 var template_params = playlist.toJSON();
-                template_params['playlist_json'] = JSON.stringify(playlist.toJSON());;
+                template_params['playlist_json'] = JSON.stringify(playlist.toJSON()).split("'").join('');
                 var template_builder = _.template($('#playlist_item_autocomplete_template').html());
                 $('.autocomplete').append(template_builder(template_params));
               })
@@ -83,6 +106,14 @@ $(document).ready(function() {
         var template_builder = _.template($('#playlist_item_template').html());
         $('.playlist_items').append(template_builder(playlist.toJSON()));
       })
+
+      events();
+    }
+
+    var retrievePlaylistItem = function(id) {
+      var ps = new UserPlaylistItems();
+      ps.fetch();
+      return ps.findWhere({id:id});
     }
 
     var retrievePlaylist = function() {
