@@ -8,6 +8,17 @@
 
   <ul class="playlist_items">
   </ul>
+
+  <article class="playlist-info">
+    <ul>
+      <li>Total Duration: <span class="playlist-total-duration"></span></li>
+      <li><span class="playlist-coolness-factor">
+        <ul class="coolness-bar">
+          <li style="width:0%;"></li>
+        </ul>
+      </span></li>
+    </ul>
+  </article>
 </section>
 
 <script type="text/template" id="new-playlist-item-template">
@@ -50,7 +61,7 @@
     <p><strong>{{track}}</strong> - {{artist}} ({{album}})</p>
     <div>
       <ul class="popbar"><li style="width:{{popularity}}%">&nbsp;</li></ul>
-      Duration: {{duration}}
+      Duration: {{duration_time}}
     </div>
     <span><a href="{{link}}">open at spotify</a> | <a href="#" class="remove-playlist-item" data-playlist-item-id="{{id}}">remove</a></span>
     <div class="clear"></div>

@@ -5,10 +5,16 @@ $(document).ready(function() {
       track: '',
       artist: '',
       album: '',
-      duration: '',
+      duration: 0,
       image_url: '',
       link: '',
       popularity: 0
+    },
+
+    duration_time : function() {
+      var utils = new Utils()
+      var time = utils.millisecondsToTime(this.get('duration'));
+      return [time.minutes, ':', time.seconds, 'min'].join('') ;
     }
   });
 

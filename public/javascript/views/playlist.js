@@ -39,8 +39,6 @@ $(document).ready(function() {
         var track_info = $(this).data('track-info');
         console.log('Found tracking info:', track_info)
 
-        // var ps = new UserPlaylistItems();
-        // ps.create(track_info);
         createPlaylistItem(track_info);
 
         var playlist = retrievePlaylist();
@@ -61,7 +59,10 @@ $(document).ready(function() {
             var playlistItems = SpotifyFacade.search($('.search_field').val(), function(result) {
               _.each(result.models.slice(0,5), function(playlist) {
                 var template_params = playlist.toJSON();
-                template_params['playlist_json'] = JSON.stringify(playlist.toJSON()).split("'").join('');
+                template_params['duration_time'] = playlist.duration_time();
+                template_params['playlist_json'] = JSON.stringify(template_params).split("'").join('');
+
+                console.log(template_params);
                 var template_builder = _.template($('#playlist_item_autocomplete_template').html());
                 $('.autocomplete').append(template_builder(template_params));
               })
@@ -75,6 +76,9 @@ $(document).ready(function() {
       $('.search_field').keydown(function(){
           clearTimeout(typingTimer);
       });
+
+      updateTotalDuration();
+      updateCoolnessFactor();
     }
 
     var build_playlist_name = function() {
@@ -97,18 +101,29 @@ $(document).ready(function() {
     }
 
     var fetchPlaylistItems = function() {
-      var ps = new UserPlaylistItems();
-      ps.fetch();
-
-      var playlistItems = ps.where({user_playlist_id: $('#page-data').data('playlist-id')});
+      var playlistItemsCollection = retrievePlaylistItems();
 
       $('.playlist_items').empty();
-      _.each(playlistItems, function(playlist) {
+      _.each(playlistItemsCollection.models, function(playlist) {
+        var playlist_json = playlist.toJSON();
+        playlist_json['duration_time'] = playlist.duration_time();
+
         var template_builder = _.template($('#playlist_item_template').html());
-        $('.playlist_items').append(template_builder(playlist.toJSON()));
+        $('.playlist_items').append(template_builder(playlist_json));
       })
 
       events();
+    }
+
+    var retrievePlaylistItems = function() {
+      var ps = new UserPlaylistItems();
+      ps.fetch();
+      var found_playlist_items = ps.where({user_playlist_id: $('#page-data').data('playlist-id')});
+      ps.reset();
+      _.each(found_playlist_items, function(pi) {
+        ps.add(pi);
+      });
+      return ps;
     }
 
     var retrievePlaylistItem = function(id) {
@@ -130,23 +145,31 @@ $(document).ready(function() {
         track: playlist_item.track,
         artist: playlist_item.artist,
         album: playlist_item.album,
-        duration: parse_duration(playlist_item.duration),
+        duration: playlist_item.duration,
         image_url: playlist_item.image_url,
         link: playlist_item.link,
         popularity: playlist_item.popularity
       });
     }
 
-    var parse_duration = function(duration) {
-      var utils = new Utils()
-      var time = utils.millisecondsToTime(duration);
-      return [time.minutes, ':', time.seconds, 'min'].join('') ;
+    var updateTotalDuration = function() {
+      var totalDuration = retrievePlaylistItems().totalDurationString();
+      $('.playlist-total-duration').text(totalDuration);
+    }
+
+    var updateCoolnessFactor = function() {
+      var coolnessFactor = retrievePlaylistItems().calculateCoolnessFactor();
+      if(coolnessFactor > 0) {
+          $('.playlist-coolness-factor li').text('COOLNESS FACTORRRRRRR!');
+          $('.playlist-coolness-factor li').css('width', [coolnessFactor,'%'].join(''));
+      }
     }
 
     init();
 
     return {
       retrievePlaylist:retrievePlaylist,
+      retrievePlaylistItems:retrievePlaylistItems,
       createPlaylistItem:createPlaylistItem,
       fetchPlaylistItems:fetchPlaylistItems
     }
