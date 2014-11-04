@@ -10,6 +10,7 @@ $(document).ready(function() {
       build_playlist_name();
       fetchPlaylistItems();
       events();
+      $('.playlist_items').sortable();
     }
 
     var events = function() {
@@ -104,9 +105,10 @@ $(document).ready(function() {
       var playlistItemsCollection = retrievePlaylistItems();
 
       $('.playlist_items').empty();
-      _.each(playlistItemsCollection.models, function(playlist) {
+      _.each(playlistItemsCollection.models, function(playlist, k) {
         var playlist_json = playlist.toJSON();
         playlist_json['duration_time'] = playlist.duration_time();
+        playlist_json['position'] = k;
 
         var template_builder = _.template($('#playlist_item_template').html());
         $('.playlist_items').append(template_builder(playlist_json));

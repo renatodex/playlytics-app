@@ -1,3 +1,8 @@
+.sortable-placeholder {
+  width: 860px;
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.28); }
+
 body {
   background-color: #f0f0f0;
   font-family: 'Alegreya Sans', 'Arial';
@@ -5,6 +10,15 @@ body {
 
 .clear {
   clear: both; }
+
+.playlist_name {
+  margin-bottom: 20px; }
+
+.playlist_name, .playlist_description {
+  width: 50%;
+  padding: 5px;
+  outline: none;
+  border: 1px solid #ccc; }
 
 #searchbar {
   margin: 0px;
@@ -70,9 +84,15 @@ body {
   margin-bottom: 20px; }
 
 #action-playlist .playlist_items {
-  margin-top: 20px; }
+  margin-top: 20px;
+  cursor: move; }
+  #action-playlist .playlist_items > li {
+    padding: 5px;
+    border: 1px solid #413E3E; }
   #action-playlist .playlist_items li {
     margin-bottom: 20px; }
+    #action-playlist .playlist_items li:hover {
+      border: 1px solid #6f6666; }
     #action-playlist .playlist_items li img {
       float: left;
       margin-right: 10px; }

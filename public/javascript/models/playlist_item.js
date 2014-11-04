@@ -8,7 +8,8 @@ $(document).ready(function() {
       duration: 0,
       image_url: '',
       link: '',
-      popularity: 0
+      popularity: 0,
+      position:0
     },
 
     duration_time : function() {

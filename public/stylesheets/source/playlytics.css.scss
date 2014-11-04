@@ -8,6 +8,12 @@
   @return #413e3e;
 }
 
+.sortable-placeholder {
+  width:860px;
+  height:60px;
+  background-color:rgba(0, 0, 0, 0.28);
+}
+
 body {
   background-color:#f0f0f0;
   @include app-font;
@@ -16,6 +22,17 @@ body {
 
 .clear {
   clear:both;
+}
+
+.playlist_name {
+  margin-bottom:20px;
+}
+
+.playlist_name, .playlist_description {
+  width: 50%;
+  padding: 5px;
+  outline: none;
+  border: 1px solid #ccc;
 }
 
 #searchbar {
@@ -104,9 +121,19 @@ body {
 #action-playlist {
   .playlist_items {
     margin-top:20px;
+    cursor:move;
+
+    & > li {
+      padding:5px;
+      border:1px solid #413E3E;
+    }
 
     li {
       margin-bottom:20px;
+
+      &:hover {
+        border:1px solid #6f6666;
+      }
 
       img {
         float:left;
