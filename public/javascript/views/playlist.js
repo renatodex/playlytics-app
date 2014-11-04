@@ -10,7 +10,6 @@ $(document).ready(function() {
       build_playlist_name();
       fetchPlaylistItems();
       events();
-      $('.playlist_items').sortable();
     }
 
     var events = function() {
@@ -80,6 +79,7 @@ $(document).ready(function() {
 
       updateTotalDuration();
       updateCoolnessFactor();
+      $('.playlist_items').sortable();
     }
 
     var build_playlist_name = function() {
